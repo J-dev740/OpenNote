@@ -1,4 +1,4 @@
-import { cn } from "@renderer/utils"
+import { cn, formateDateFromMs } from "@renderer/utils"
 import { NoteInfo } from "@shared/models"
 import { ComponentProps } from "react"
 
@@ -9,6 +9,7 @@ export type NotePreviewProps=NoteInfo & {
 
 
 export const NotePreview =({title,content,className,lastEditTime,isActive=false,...props}:NotePreviewProps)=>{
+    const dt=formateDateFromMs(lastEditTime)
     return (
         <div
         className={cn(`cursor-pointer px-2.5 py-3 rounded-md transition-colors duration-75 `,{
@@ -17,7 +18,7 @@ export const NotePreview =({title,content,className,lastEditTime,isActive=false,
         },className)} {...props}
         >
             <h3 className="mb-1 font-bold truncate">{title}</h3>
-            <span className="inline-block w-full mb-2 text-xs font-light text-left ">{lastEditTime}</span>
+            <span className="inline-block w-full mb-2 text-xs font-light text-left ">{dt}</span>
             
         </div>
     )

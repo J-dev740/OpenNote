@@ -1,4 +1,6 @@
 import { Content, RootLayout,SideBar, DraggableTopBar,ActionButtonsRow, NotesPreviewList } from "@/components"
+import MarkDownEditor from "./components/MarkDownEditor"
+import FloatingNoteTitle from "./components/FloatingNoteTitle"
 const App=()=>{
   return (
     <>
@@ -9,7 +11,8 @@ const App=()=>{
         <NotesPreviewList  className='mt-3 space-y-1 '/>
       </SideBar>
       <Content className="border-l border-zinc-900/50 border-l-white/20">
-        content 
+      <FloatingNoteTitle/>
+        <MarkDownEditor/>
       </Content>
     </RootLayout>
     </>
