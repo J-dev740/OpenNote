@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    .titlebar {
+      -webkit-app-region: drag;
+      width: 100%;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      background: #2f3241;
+    }
+    .traffic-lights {
+      display: flex;
+      margin-left: 8px;
+    }
+    .traffic-lights button {
+      -webkit-app-region: no-drag;
+      width: 12px;
+      height: 12px;
+      border: none;
+      margin-right: 8px;
+      border-radius: 50%;
+    }
+    .close {
+      background: #ff5f56;
+    }
+    .minimize {
+      background: #ffbd2e;
+    }
+    .maximize {
+      background: #28c940;
+    }
+  </style>
+</head>
+<body>
+  <div class="titlebar">
+    <div class="traffic-lights">
+      <button class="close" onclick="window.close()"></button>
+      <button class="minimize" onclick="minimizeWindow()"></button>
+      <button class="maximize" onclick="maximizeWindow()"></button>
+    </div>
+  </div>
+
+  <script>
+    const { remote } = require('electron');
+    const currentWindow = remote.getCurrentWindow();
+
+    function minimizeWindow() {
+      currentWindow.minimize();
+    }
+
+    function maximizeWindow() {
+      if (currentWindow.isMaximized()) {
+        currentWindow.unmaximize();
+      } else {
+        currentWindow.maximize();
+      }
+    }
+
+    function closeWindow() {
+      currentWindow.close();
+    }
+  </script>
+</body>
+</html>

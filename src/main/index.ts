@@ -11,6 +11,13 @@ function createWindow(): void {
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
+    center:true,
+    title:'OpenNote',
+    frame:false,
+    vibrancy:'under-window',
+    visualEffectState:'active',
+    titleBarStyle:'default',
+    trafficLightPosition:{x:15, y:10},
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       // sandbox: false
@@ -18,8 +25,9 @@ function createWindow(): void {
       contextIsolation:true
     }
   })
-
+  
   mainWindow.on('ready-to-show', () => {
+    // mainWindow.loadFile('index.html')
     mainWindow.show()
   })
 
