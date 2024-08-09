@@ -1,6 +1,8 @@
-import { Content, RootLayout,SideBar } from "./components"
-function App(){
+import { Content, RootLayout,SideBar, DraggableTopBar } from "@/components"
+const App=()=>{
   return (
+    <>
+      <DraggableTopBar/>
     <RootLayout className="bg-black bg-opacity-80">
       <SideBar  className="p-2">
         sidebar
@@ -9,6 +11,7 @@ function App(){
         content 
       </Content>
     </RootLayout>
+    </>
     
   )
 }
