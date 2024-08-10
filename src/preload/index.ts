@@ -1,5 +1,6 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
+import { GetNotes } from '@shared/types'
 
 // Custom APIs for renderer
 // const api = {}
@@ -27,7 +28,11 @@ if(!process.contextIsolated){
 try {
   contextBridge.exposeInMainWorld('context',{
     // TODO:
-    locale:navigator.language
+    locale:navigator.language,
+    // exposing the function to the main process using the context bridge under the context object 
+    // this is actually a proxy function to invoke the handler which is also named getNotes 
+    getNotes:(...args:Parameters<GetNotes>)=>ipcRenderer.invoke('getNotes',...args),
+
   })
 } catch (error) {
   console.log(error)
