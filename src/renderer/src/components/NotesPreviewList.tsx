@@ -4,6 +4,7 @@ import { NotePreview } from "./NotePreview"
 import { twMerge } from "tailwind-merge"
 import { useNotesList } from "@renderer/hooks/useNotesList"
 import { NoteInfo } from "@shared/models"
+import {isEmpty} from 'lodash'
 
 
 export type NotesPreviewListProps={
@@ -13,7 +14,8 @@ export const NotesPreviewList=({className,children,onSelect,...props}:NotesPrevi
     // onSelect function is actually used to reset the scroll every time we visited a new Note so that each note preview starts with a scroll of 0 
     const {notes,selectedIndex,handleSelect}=useNotesList({onSelect})
     // if(notesMock.length==0) return (
-    if(notes.length<=0) return(
+    if(!notes) return null;
+    if(isEmpty(notes)) return(
         <ul className={twMerge('text-center pt-4 ',className)} {...props}>
             <span>No Notes Yet!</span>
         </ul>

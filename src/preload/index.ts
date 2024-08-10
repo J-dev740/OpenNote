@@ -1,6 +1,6 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import { electronAPI } from '@electron-toolkit/preload'
-import { GetNotes } from '@shared/types'
+// import { electronAPI } from '@electron-toolkit/preload'
+import { GetNotes, ReadNote } from '@shared/types'
 
 // Custom APIs for renderer
 // const api = {}
@@ -32,6 +32,7 @@ try {
     // exposing the function to the main process using the context bridge under the context object 
     // this is actually a proxy function to invoke the handler which is also named getNotes 
     getNotes:(...args:Parameters<GetNotes>)=>ipcRenderer.invoke('getNotes',...args),
+    readNote:(...args:Parameters<ReadNote>)=>ipcRenderer.invoke('readNote',...args),
 
   })
 } catch (error) {
