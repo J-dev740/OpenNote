@@ -13,6 +13,7 @@ export const selectedNoteAtom=atom((get)=>{
     const selectedNote=notes[selectedIndex];
     return{
         ...selectedNote,
+        // this content needs to updated dynamically from the editor 
         content:`Hello from Note${selectedIndex}`
     }
 })
