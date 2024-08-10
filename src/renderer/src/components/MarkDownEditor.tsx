@@ -28,11 +28,14 @@ const simpleSandpackConfig: SandpackConfig = {
   ]
 }
 const MarkDownEditor = () => {
-    const {selectedNote}=useMarkDownEditor()
+    const {selectedNote,editorRef,handleAutoSaving,handleBlur}=useMarkDownEditor()
     if(!selectedNote) return null
   return (
     <MDXEditor 
+    ref={editorRef}
     key={selectedNote.title}
+    onChange={handleAutoSaving}
+    onBlur={handleBlur}
     plugins={[headingsPlugin(),listsPlugin(),quotePlugin(),markdownShortcutPlugin(),linkPlugin(),
         codeBlockPlugin({defaultCodeBlockLanguage: 'js'}),
         // sandpackPlugin({ sandpackConfig: simpleSandpackConfig }),
