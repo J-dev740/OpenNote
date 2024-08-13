@@ -17,7 +17,7 @@ export const useMarkDownEditor=()=>{
     ,{
         leading:false,
         trailing:true,
-    })
+    },100000)
 
 
     const handleBlur=async()=>{

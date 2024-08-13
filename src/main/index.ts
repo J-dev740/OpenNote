@@ -15,7 +15,8 @@ function createWindow(): void {
     ...(process.platform === 'linux' ? { icon } : {}),
     center:true,
     title:'OpenNote',
-    frame:false,
+    // frame:false,
+    
     vibrancy:'under-window',
     visualEffectState:'active',
     titleBarStyle:'default',
@@ -69,7 +70,7 @@ app.whenReady().then(() => {
   ipcMain.handle('writeNote',(_,...args:Parameters<WriteNote>)=>writeNote(...args));
   ipcMain.handle('createNote',(_,...args:Parameters<CreateNote>)=>createNote(...args))
   ipcMain.handle('deleteNote',(_,...args:Parameters<DeleteNote>)=>deleteNote(...args))
-  
+
 
 
   createWindow()
